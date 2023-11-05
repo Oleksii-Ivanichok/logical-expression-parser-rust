@@ -1,0 +1,20 @@
+// grammar.pest
+integer = @{ ASCII_DIGIT+ }
+
+unary_not = { "!" }
+logical_and = { "&&" }
+logical_or = { "||" }
+implication = { "->" }
+equivalence = { "=" }
+xor = { "xor" }
+
+primary = _{ integer | "(" ~ expr ~ ")" }
+atom = _{ unary_not? ~ primary }
+
+bin_op = _{ logical_and | logical_or | implication | equivalence | xor }
+expr = { atom ~ (bin_op ~ atom)* }
+
+// We can't have SOI and EOI on expr directly, because it is used recursively (e.g. with parentheses)
+equation = _{ SOI ~ expr ~ EOI }
+
+WHITESPACE = _{ " " }
