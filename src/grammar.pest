@@ -1,20 +1,38 @@
-// grammar.pest
-integer = @{ ASCII_DIGIT+ }
+/// Matches a binary digit, either "0" or "1".
+binary_digit = @{ "0" | "1" }
 
+/// Matches a binary operator, which can be logical AND, logical OR, implication, equivalence, or XOR.
+bin_op = _{ logical_and | logical_or | implication | equivalence | xor }
+
+/// Matches the "!" character, representing logical NOT.
 unary_not = { "!" }
+
+/// Matches the "&&" characters, representing logical AND.
 logical_and = { "&&" }
+
+/// Matches the "||" characters, representing logical OR.
 logical_or = { "||" }
+
+/// Matches the "->" characters, representing implication.
 implication = { "->" }
+
+/// Matches the "=" character, representing equivalence.
 equivalence = { "=" }
+
+/// Matches the "xor" characters, representing XOR.
 xor = { "xor" }
 
-primary = _{ integer | "(" ~ expr ~ ")" }
+/// Matches a primary expression, which can be either a binary digit or an expression enclosed in parentheses.
+primary = _{ binary_digit | "(" ~ expr ~ ")" }
+
+/// Matches an atom, which is a combination of an optional logical NOT and a primary expression.
 atom = _{ unary_not? ~ primary }
 
-bin_op = _{ logical_and | logical_or | implication | equivalence | xor }
+/// Matches a full expression, consisting of atoms separated by binary operators.
 expr = { atom ~ (bin_op ~ atom)* }
 
-// We can't have SOI and EOI on expr directly, because it is used recursively (e.g. with parentheses)
+/// Matches the entire equation, surrounded by the SOI (Start of Input) and EOI (End of Input) markers.
 equation = _{ SOI ~ expr ~ EOI }
 
-WHITESPACE = _{ " " }
+/// Matches whitespace, represented by a single space character or a tab.
+WHITESPACE = _{ " " | "\t" }
