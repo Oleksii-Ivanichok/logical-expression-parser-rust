@@ -5,26 +5,7 @@ edition = "2021"
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-description = "
-Logical Expression Parser
-This is a simple logical expression parser written in Rust using pest library.
-The program consist of two main part:
-1. parse_expr function that takes string as input and transform it into abstract syntax tree (AST) and save in Expr enum format.
-2. evaluate method implemented for Expr enum that calculate result of expression
-
-Supported Syntax
-The parser supports the following syntax:
-
-True: '1'
-False: '0'
-NOT: '!'
-Logical AND: '&&'
-Logical OR: '||'
-Implication: '->'
-Equivalence: '<->'
-XOR: 'xor'
-parentheses: '(', ')'
-"
+description = "This is a simple logical expression parser written in Rust using pest library"
 
 [dependencies]
 lazy_static = "1.4.0"
