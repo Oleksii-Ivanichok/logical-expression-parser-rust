@@ -1,4 +1,4 @@
-use logical_parser_pest::*;
+use logical_expression_parser::*;
 use std::io::{self, BufRead};
 
 fn main() -> io::Result<()> {
@@ -9,7 +9,7 @@ fn main() -> io::Result<()> {
             Ok(mut pairs) => {
                 let parsed_expr = parse_expr(pairs.next().unwrap().into_inner());
                 let result = parsed_expr.evaluate();
-                println!("Parsed: {:#?}\nResult: {}", parsed_expr, result);
+                println!("Abstract syntax tree:\n{:#?}\nResult: {}", parsed_expr, result);
             }
             Err(e) => {
                 eprintln!("Parse failed: {:?}", e);

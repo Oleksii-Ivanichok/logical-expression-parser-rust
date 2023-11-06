@@ -1,6 +1,6 @@
 use lazy_static::lazy_static;
-use pest_derive::Parser;
 pub use pest::Parser;
+use pest_derive::Parser;
 
 pub use pest::iterators::Pairs;
 use pest::pratt_parser::PrattParser;
@@ -34,7 +34,6 @@ pub enum Expr {
     },
 }
 
-
 #[derive(Debug, PartialEq, Eq)]
 pub enum Op {
     LogicalAnd,
@@ -43,7 +42,6 @@ pub enum Op {
     Equivalence,
     Xor,
 }
-
 
 pub fn parse_expr(pairs: Pairs<Rule>) -> Expr {
     PRATT_PARSER

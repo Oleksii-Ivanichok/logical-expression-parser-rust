@@ -17,7 +17,7 @@ logical_or = { "||" }
 implication = { "->" }
 
 /// Matches the "=" character, representing equivalence.
-equivalence = { "=" }
+equivalence = { "<->" }
 
 /// Matches the "xor" characters, representing XOR.
 xor = { "xor" }
