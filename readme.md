@@ -4,6 +4,9 @@ The program consist of two main part:
 1. parse_expr function that takes string as input and transform it into abstract syntax tree (AST) and save in Expr enum format.
 2. evaluate method implemented for Expr enum that calculate result of expression
 
+## Program has CLI.
+Use command 'cargo run -- -h' to display help message.
+
 ## Supported Syntax
 The parser supports the following syntax:
 
