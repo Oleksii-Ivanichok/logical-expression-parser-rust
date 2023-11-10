@@ -58,6 +58,7 @@ fn main() -> io::Result<()> {
         match args[1].as_str() {
             "-h" => {
                 print_help();
+                print_credits();
             }
             "-c" => {
                 print_credits();
